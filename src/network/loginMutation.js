@@ -3,8 +3,8 @@ import { useMutation } from "@apollo/react-hooks";
 import { useAuthToken } from "../config/auth";
 
 export const loginMutationGQL = gql`
-  mutation loginUsingPassword($username: String!, $password: String!) {
-    loginUsingPassword(input: { username: $username, password: $password }) {
+  mutation loginUsingPassword($username: Email!, $password: Secret!) {
+    loginUsingPassword(username: $username, password: $password) {
       accessToken
     }
   }
@@ -16,7 +16,7 @@ export const useLoginMutation = () => {
   const [mutation, mutationResults] = useMutation(loginMutationGQL, {
     onCompleted: (data) => {
         console.log("result data---",data);
-      setAuthToken(data.login.accessToken);
+      setAuthToken(data.loginUsingPassword.accessToken);
     }
   });
 
@@ -28,8 +28,8 @@ export const useLoginMutation = () => {
     removeAuthtoken();
     return mutation({
       variables: {
-        login: user,
-        password,
+        username: user,
+        password:password,
       },
     });
   }

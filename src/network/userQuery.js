@@ -3,9 +3,10 @@ import { useQuery } from "@apollo/react-hooks";
 
 
 const userQueryGQL = gql`
-  query user {
-      username
-      email
+ query me {
+  users{
+    firstName
   }
+}
 `;
 export const useUserQuery = () => useQuery(userQueryGQL);
