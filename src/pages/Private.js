@@ -6,7 +6,7 @@ const Private = ({ user }) => {
 
   return (
     <div style={{ margin: "auto", padding: "100px" }}>
-      <h4>Congratulations, you are authentified !</h4>
+      <h4>Congratulations, you are authenticated !</h4>
       <pre style={{ backgroundColor: "#eee" }}>
         {JSON.stringify(user, null, 2)}
       </pre>
